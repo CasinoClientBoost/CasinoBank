@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CasinoBank - Эксклюзивные банковские услуги</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0a3d62, #1e5f8a);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Шапка */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 2px solid #f39c12;
+            margin-bottom: 40px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+            color: #f39c12;
+        }
+        
+        .logo-text {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #f39c12, #e74c3c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        /* Основной контент */
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+            margin: 30px 0;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><polygon points="0,0 100,0 100,100" fill="rgba(243, 156, 18, 0.1)"/></svg>');
+            background-size: 100% 100%;
+            z-index: -1;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: #ecf0f1;
+        }
+        
+        /* Преимущества */
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin: 60px 0;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            width: 100%;
+            max-width: 350px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(243, 156, 18, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .feature-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: #f39c12;
+        }
+        
+        .feature-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #f1c40f;
+        }
+        
+        .feature-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        /* Секция времени работы */
+        .server-time {
+            text-align: center;
+            padding: 40px 20px;
+            margin: 50px 0;
+            background: rgba(192, 57, 43, 0.3);
+            border-radius: 15px;
+            border: 2px solid #c0392b;
+            position: relative;
+        }
+        
+        .server-time::after {
+            content: "⚠️ ВАЖНО! ⚠️";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #c0392b;
+            padding: 5px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .server-time h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #f1c40f;
+        }
+        
+        .time-display {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            color: #f39c12;
+            border: 2px solid #e74c3c;
+        }
+        
+        .time-note {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 20px auto 0;
+            line-height: 1.7;
+            color: #f5b7b1;
+        }
+        
+        /* Подвал */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+            border-top: 1px solid rgba(243, 156, 18, 0.5);
+            font-size: 0.9rem;
+            color: #bdc3c7;
+        }
+        
+        /* Анимации */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .feature-card {
+                max-width: 100%;
+            }
+            
+            .time-display {
+                font-size: 1.8rem;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Шапка -->
+        <header>
+            <div class="logo">
+                <div class="logo-icon">🎰</div>
+                <div class="logo-text">CasinoBank</div>
+            </div>
+        </header>
+        
+        <!-- Основной контент -->
+        <section class="hero">
+            <h1>Эксклюзивные банковские услуги</h1>
+            <p>Добро пожаловать в CasinoBank - инновационный банк с уникальными условиями, созданными специально для вас!</p>
+        </section>
+        
+        <!-- Преимущества -->
+        <div class="features">
+            <div class="feature-card pulse">
+                <div class="feature-icon">💰</div>
+                <h2 class="feature-title">Собственная валюта (NJ)</h2>
+                <p class="feature-description">Только у нас вы можете пользоваться нашей эксклюзивной валютой NJ. Это уникальная валюта с особыми характеристиками, недоступными в других финансовых системах.</p>
+            </div>
+            
+            <div class="feature-card pulse">
+                <div class="feature-icon">⚡</div>
+                <h2 class="feature-title">Моментальные переводы</h2>
+                <p class="feature-description">Наши переводы занимают всего 20 секунд! Никаких ожиданий, подтверждений или задержек. Ваши средства перемещаются почти мгновенно.</p>
+            </div>
+            
+            <div class="feature-card pulse">
+                <div class="feature-icon">🖥️</div>
+                <h2 class="feature-title">Уникальная система работы</h2>
+                <p class="feature-description">Наши сервера работают по особому графику. Мы гарантируем доступность наших услуг в строго определенное время для максимальной безопасности.</p>
+            </div>
+        </div>
+        
+        <!-- Время работы серверов -->
+        <section class="server-time">
+            <h2>Расписание работы серверов</h2>
+            <div class="time-display">14:00 - 14:20</div>
+            <p class="time-note">Наши сервера работают только когда я их открываю у себя на компе. Поэтому доступ к банковским услугам возможен исключительно с 14:00 до 14:20 по местному времени. Пожалуйста, планируйте свои операции в этот временной интервал.</p>
+        </section>
+    </div>
+    
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <p>© 2023 CasinoBank. Все права защищены. Услуги предоставляются на особых условиях.</p>
+            <p>Мы не предоставляем банковских лицензий и не являемся частью традиционной банковской системы.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Функция для обновления времени
+        function updateTime() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            
+            // Проверка времени работы
+            const isWorkingHours = (hours === '14' && minutes >= '00' && minutes <= '19');
+            const serverTimeElement = document.querySelector('.server-time');
+            
+            if (isWorkingHours) {
+                serverTimeElement.style.backgroundColor = 'rgba(46, 204, 113, 0.3)';
+                serverTimeElement.style.borderColor = '#27ae60';
+            } else {
+                serverTimeElement.style.backgroundColor = 'rgba(192, 57, 43, 0.3)';
+                serverTimeElement.style.borderColor = '#c0392b';
+            }
+            
+            // Обновляем время каждую секунду
+            setTimeout(updateTime, 1000);
+        }
+        
+        // Запуск при загрузке страницы
+        document.addEventListener('DOMContentLoaded', updateTime);
+    </script>
+</body>
+</html>
